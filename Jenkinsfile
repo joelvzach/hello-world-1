@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Building docker image') {
             steps{
-                  sh "sudo service docker start"
+                  sh "service docker start"
                   script {
                         
                         dockerImage = docker.build imagename
