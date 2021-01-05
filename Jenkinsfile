@@ -4,7 +4,7 @@ pipeline {
         PATH = "/opt/maven/bin:$PATH"
         
         imagename = "joelvzach/hello-world-1"
-        registryCredential = ''
+        registryCredential = 'ca9400ea-ddce-414a-a821-55a0daf01fc0'
         dockerImage = ''
 
     }
@@ -26,9 +26,20 @@ pipeline {
                   script {
                         
                         dockerImage = docker.build imagename
-}
-}
-}
+                    }
+            }
+        }
+        
+        stage('Upload Image') {
+        steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+                }
+            }
+        }
+      }
+        
        /* stage("deploy"){
             steps{
               sshagent(['deploy_user']) {
