@@ -3,7 +3,7 @@ pipeline {
     environment {
         PATH = "/opt/maven/bin:$PATH"
         
-        imagename = "joelvzach/hello-world-1"
+        imagename = "johnoverboard/hello-world-1"
         registryCredential = 'ca9400ea-ddce-414a-a821-55a0daf01fc0'
         dockerImage = ''
 
